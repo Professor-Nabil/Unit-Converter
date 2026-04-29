@@ -78,3 +78,27 @@ select {
   border-radius: 4px;
   text-align: center;
 }
+
+.error-box {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6cb;
+  font-size: 0.9rem;
+}
+
+/* Ensure the Reset button looks like a subtle secondary action */
+.btn-reset {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #6c757d;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+
+.btn-reset:hover {
+  color: #343a40;
+}

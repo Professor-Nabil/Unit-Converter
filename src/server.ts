@@ -11,6 +11,14 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
+/**
+ * Simple validation helper
+ */
+const validateInput = (value: string): number | null => {
+  const parsed = parseFloat(value);
+  return isNaN(parsed) ? null : parsed;
+};
+
 // Middleware
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -33,8 +41,17 @@ app.get("/length", (req, res) => {
 // POST: Process the conversion and re-render the page
 app.post("/length", (req, res) => {
   const { value, fromUnit, toUnit } = req.body;
+  const numValue = validateInput(value);
 
-  const numValue = parseFloat(value);
+  if (numValue === null) {
+    return res.render("length", {
+      title: "Length Converter",
+      error: "Please enter a valid number.",
+      value,
+      result: undefined,
+    });
+  }
+
   const result = convertLength(
     numValue,
     fromUnit as LengthUnit,
@@ -47,6 +64,7 @@ app.post("/length", (req, res) => {
     fromUnit,
     toUnit,
     result,
+    error: undefined,
   });
 });
 
@@ -60,13 +78,22 @@ app.get("/weight", (req, res) => {
 
 app.post("/weight", (req, res) => {
   const { value, fromUnit, toUnit } = req.body;
-  const numValue = parseFloat(value);
+  const numValue = validateInput(value); // Use the helper!
+
+  if (numValue === null) {
+    return res.render("weight", {
+      title: "Weight Converter",
+      error: "Please enter a valid number.",
+      value,
+      result: undefined,
+    });
+  }
+
   const result = convertWeight(
     numValue,
     fromUnit as WeightUnit,
     toUnit as WeightUnit,
   );
-
   res.render("weight", {
     title: "Weight Converter",
     value: numValue,
@@ -86,13 +113,22 @@ app.get("/temperature", (req, res) => {
 
 app.post("/temperature", (req, res) => {
   const { value, fromUnit, toUnit } = req.body;
-  const numValue = parseFloat(value);
+  const numValue = validateInput(value); // Use the helper!
+
+  if (numValue === null) {
+    return res.render("temperature", {
+      title: "Temperature Converter",
+      error: "Please enter a valid number.",
+      value,
+      result: undefined,
+    });
+  }
+
   const result = convertTemp(
     numValue,
     fromUnit as TempUnit,
     toUnit as TempUnit,
   );
-
   res.render("temperature", {
     title: "Temperature Converter",
     value: numValue,

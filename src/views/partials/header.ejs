@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="container">
+        <% if (locals.error) { %>
+            <div class="error-box">
+                <%= error %>
+            </div>
+        <% } %>
+
         <nav>
             <a href="/length">Length</a>
             <a href="/weight">Weight</a>

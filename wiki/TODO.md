@@ -29,7 +29,7 @@
 
 ### Phase 4: Refinement
 
-- [ ] **Commit 8: Validation & UX**
+- [x] **Commit 8: Validation & UX**
   - Add error messages if the user inputs text instead of numbers.
   - Add a "Reset" button as seen in the wireframe.
 - [ ] **Commit 9: Final Documentation**
