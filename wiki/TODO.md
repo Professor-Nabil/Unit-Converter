@@ -2,7 +2,7 @@
 
 ### Phase 1: The Foundation
 
-- [ ] **Commit 1: Basic Server Setup**
+- [x] **Commit 1: Basic Server Setup**
   - Initialize Express + TypeScript.
   - Setup EJS as the view engine.
   - Create a global `style.css` for that handwritten look.
