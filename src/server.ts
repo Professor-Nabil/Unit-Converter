@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import { convertLength, LengthUnit } from "./engine/lengthLogic.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,8 +19,33 @@ app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
 
+// GET: Display the empty form
 app.get("/length", (req, res) => {
-  res.render("length", { title: "Length Converter" });
+  res.render("length", {
+    title: "Length Converter",
+    value: undefined,
+    result: undefined,
+  });
+});
+
+// POST: Process the conversion and re-render the page
+app.post("/length", (req, res) => {
+  const { value, fromUnit, toUnit } = req.body;
+
+  const numValue = parseFloat(value);
+  const result = convertLength(
+    numValue,
+    fromUnit as LengthUnit,
+    toUnit as LengthUnit,
+  );
+
+  res.render("length", {
+    title: "Length Converter",
+    value: numValue,
+    fromUnit,
+    toUnit,
+    result,
+  });
 });
 
 app.get("/weight", (req, res) => {

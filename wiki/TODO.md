@@ -17,7 +17,7 @@
 - [x] **Commit 4: Length Engine**
   - Implement conversion logic (mm to km, inch to foot, etc.).
   - Write tests to ensure `12 inches === 1 foot`.
-- [ ] **Commit 5: Length Integration**
+- [x] **Commit 5: Length Integration**
   - Handle the POST/GET request to display results on the same page.
 
 ### Phase 3: Weight & Temperature
