@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { convertLength, LengthUnit } from "./engine/lengthLogic.js";
+import { convertWeight, WeightUnit } from "./engine/weightLogic.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,7 +50,29 @@ app.post("/length", (req, res) => {
 });
 
 app.get("/weight", (req, res) => {
-  res.render("weight", { title: "Weight Converter" });
+  res.render("weight", {
+    title: "Weight Converter",
+    value: undefined,
+    result: undefined,
+  });
+});
+
+app.post("/weight", (req, res) => {
+  const { value, fromUnit, toUnit } = req.body;
+  const numValue = parseFloat(value);
+  const result = convertWeight(
+    numValue,
+    fromUnit as WeightUnit,
+    toUnit as WeightUnit,
+  );
+
+  res.render("weight", {
+    title: "Weight Converter",
+    value: numValue,
+    fromUnit,
+    toUnit,
+    result,
+  });
 });
 
 app.get("/temperature", (req, res) => {
