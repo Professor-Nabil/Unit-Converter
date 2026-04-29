@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { convertLength, LengthUnit } from "./engine/lengthLogic.js";
 import { convertWeight, WeightUnit } from "./engine/weightLogic.js";
+import { convertTemp, TempUnit } from "./engine/tempLogic.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -76,7 +77,29 @@ app.post("/weight", (req, res) => {
 });
 
 app.get("/temperature", (req, res) => {
-  res.render("temperature", { title: "Temperature Converter" });
+  res.render("temperature", {
+    title: "Temperature Converter",
+    value: undefined,
+    result: undefined,
+  });
+});
+
+app.post("/temperature", (req, res) => {
+  const { value, fromUnit, toUnit } = req.body;
+  const numValue = parseFloat(value);
+  const result = convertTemp(
+    numValue,
+    fromUnit as TempUnit,
+    toUnit as TempUnit,
+  );
+
+  res.render("temperature", {
+    title: "Temperature Converter",
+    value: numValue,
+    fromUnit,
+    toUnit,
+    result,
+  });
 });
 
 app.listen(PORT, () => {

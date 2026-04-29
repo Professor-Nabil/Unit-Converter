@@ -1,4 +1,39 @@
 <%- include('partials/header') %>
-    <h2>Temperature Converter</h2>
-    <p>Form coming soon...</p>
+    <h1>Temperature Converter</h1>
+    
+    <form action="/temperature" method="POST">
+        <div class="form-group">
+            <label for="value">Value:</label>
+            <input type="number" step="any" name="value" id="value" value="<%= locals.value || '' %>" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fromUnit">From:</label>
+                <select name="fromUnit" id="fromUnit">
+                    <option value="celsius" selected>Celsius</option>
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="toUnit">To:</label>
+                <select name="toUnit" id="toUnit">
+                    <option value="celsius">Celsius</option>
+                    <option value="fahrenheit" selected>Fahrenheit</option>
+                    <option value="kelvin">Kelvin</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-convert">Convert</button>
+        <a href="/temperature" class="btn-reset">Reset</a>
+    </form>
+
+    <% if (locals.result !== undefined) { %>
+        <div class="result-box">
+            <p><strong>Result:</strong> <%= value %>° <%= fromUnit %> = <%= result %>° <%= toUnit %></p>
+        </div>
+    <% } %>
 <%- include('partials/footer') %>

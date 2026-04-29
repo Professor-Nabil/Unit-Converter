@@ -24,7 +24,7 @@
 
 - [x] **Commit 6: Weight Implementation**
   - Form UI and conversion engine for gram, kg, pound, etc.
-- [ ] **Commit 7: Temperature Implementation**
+- [x] **Commit 7: Temperature Implementation**
   - Special logic for Celsius/Fahrenheit/Kelvin (since they aren't simple ratios).
 
 ### Phase 4: Refinement
