@@ -6,7 +6,7 @@
   - Initialize Express + TypeScript.
   - Setup EJS as the view engine.
   - Create a global `style.css` for that handwritten look.
-- [ ] **Commit 2: Navigation & Layout**
+- [x] **Commit 2: Navigation & Layout**
   - Create partials (header/nav).
   - Implement basic routing for `/length`, `/weight`, and `/temperature`.
 
