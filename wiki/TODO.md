@@ -14,7 +14,7 @@
 
 - [x] **Commit 3: Length UI**
   - Create the form for length in `length.ejs`.
-- [ ] **Commit 4: Length Engine**
+- [x] **Commit 4: Length Engine**
   - Implement conversion logic (mm to km, inch to foot, etc.).
   - Write tests to ensure `12 inches === 1 foot`.
 - [ ] **Commit 5: Length Integration**
