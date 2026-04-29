@@ -12,7 +12,7 @@
 
 ### Phase 2: Length Conversion (The Prototype)
 
-- [ ] **Commit 3: Length UI**
+- [x] **Commit 3: Length UI**
   - Create the form for length in `length.ejs`.
 - [ ] **Commit 4: Length Engine**
   - Implement conversion logic (mm to km, inch to foot, etc.).
